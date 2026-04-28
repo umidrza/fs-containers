@@ -2,12 +2,12 @@ FROM node:24
 
 WORKDIR /usr/src/app
 
-COPY --chown=node:node . .
+COPY --chown=node:node package*.json ./
 
 RUN npm install
 
-ENV DEBUG=todo-backend:*
+COPY . .
 
 USER node
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]
